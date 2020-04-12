@@ -1,5 +1,6 @@
-#from server import app
+from server import app
 from flask import Flask, render_template, request, flash, redirect, session
+from model import Model, User, Goal
 
 
 @app.route("/")
@@ -49,6 +50,14 @@ def login_process():
         return redirect(f"/user_goals/{user_id}")
     else:
         return redirect("/")
+
+
+def search_goals(self, search_parms):
+    """Function to search the user's goals"""
+
+    user_goals = Goal.query.filter_by(user_id=user_id)
+    goal = user_goals.filter(Goal.keywords.like(f"%{search_parms}%")).all()
+    return goal
 
 
 @app.route("/logout")

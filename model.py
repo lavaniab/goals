@@ -28,11 +28,11 @@ class User(db.Model):
 	def is_valid_password(self, password):
 		return check_password_hash(self.password, password)
 
-class Note(db.Model):
-	
+class Goal(db.Model):
+
 	__tablename__="notes"
 
-	note_id = db.Column(db.Integer, primary_key=True)
+	goal_id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 	goal = db.Column(db.String(), nullable=True)
 
