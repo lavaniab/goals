@@ -1,7 +1,7 @@
 from server import app
 from flask import Flask, render_template, request, redirect, session, jsonify
 from model import Model, db, User, Goal
-
+from sqlalchemy import update
 
 @app.route("/")
 def homepage():
@@ -76,7 +76,12 @@ def edit_goal():
 
     user_id = session["user_id"]
     goal = Goal.query(User).get(user_id)
-    update()
+    goal_id = goal.goal_id
+    updated_goal = goal.update(). \
+        where(goal_id=goal_id). \
+        values(goal='')
+
+    return jsonify({"goal_id": goal.goal_id, "Goal": updated_goal.goal})
 
 
 @app.route("/logout")
