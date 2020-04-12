@@ -5,22 +5,22 @@
 
 </div>
 	<div>
-		<form id="addNoteForm" action="/add_note" method="POST" enctype="multipart/form-data">
+		<form id="addGoalForm" action="/add_goal" method="POST" enctype="multipart/form-data">
 			<h3>Add a note</h3>
-			<textarea type="text" name="note" id="note" placeholder="Not all who wander..."></textarea>
+			<textarea type="text" name="goal" id="goal" placeholder="I need to..."></textarea>
 			<br>
 			<br>
 			<input type="submit" class="btn btn-dark">
 		</form>
 	</div>
 
-	<div class="notes-section">
+	<div class="goals-section">
 	<br>
-		<p id="note-p">Notes</p>
-		<div id="allTheNotes">
-			{% if notes %}
-				{% for note in notes %}
-				<p>{{note.note}}</p> <!--can add an href here-->
+		<p id="goal-p">Notes</p>
+		<div id="allTheGoals">
+			{% if goals %}
+				{% for goal in goals %}
+				<p>{{goal.goal}}</p> <!--can add an href here-->
 				{% endfor %}
 			{% endif %}
 		</div>

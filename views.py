@@ -74,9 +74,9 @@ def add_goal():
 def edit_goal():
     """Function to search the user's goals"""
 
-    user_goals = Goal.query.filter_by(user_id=user_id).all()
-    goal = Goal.query.filter_by(goal_id=goal_id).first()
-    return goal
+    user_id = session["user_id"]
+    goal = Goal.query(User).get(user_id)
+    update()
 
 
 @app.route("/logout")

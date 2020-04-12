@@ -49,7 +49,7 @@ def connect_to_db(app):
 	"""Connect the database to our Flask app."""
 
 	# Configure to use our PostgreSQL database
-	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:beguhl10@localhost:5433/take-home-proj'
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:var/take-home-proj'
 	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 	app.config['SQLALCHEMY_ECHO'] = True
 	db.app = app

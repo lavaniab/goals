@@ -2,22 +2,22 @@
 
 
 $(document).ready(function() {
-	const whereTheNotesGo = $('#allTheNotes');
+	const whereTheGoalsGo = $('#allTheGoals');
 
-	$('#addNoteForm').submit(function(event) {
+	$('#addGoalForm').submit(function(event) {
 		event.preventDefault();
 		const formData = $(this).serializeArray()
 		const payload = {
-			data: { note: formData[0].value },
+			data: { goal: formData[0].value },
 			method: 'POST',
-			url: '/add_note'
+			url: '/add_goal'
 		};
 		const myRequest = $.ajax(payload);
 
 		myRequest.then(function(response) {
-			const htmlToAdd = `<p>${response.note}</p>` //can add href here
+			const htmlToAdd = `<p>${response.goal}</p>` //can add href here
                       									//template literal
-			whereTheNotesGo.append(htmlToAdd);
+			whereTheGoalsGo.append(htmlToAdd);
 
 			$('#note').val('')
 		})
