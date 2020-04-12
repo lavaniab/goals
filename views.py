@@ -1,5 +1,5 @@
 from server import app
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, redirect, session
 from model import Model, User, Goal
 
 

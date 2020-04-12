@@ -30,7 +30,7 @@ class User(db.Model):
 
 class Goal(db.Model):
 
-	__tablename__="notes"
+	__tablename__="goals"
 
 	goal_id = db.Column(db.Integer, primary_key=True)
 	user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
@@ -38,9 +38,9 @@ class Goal(db.Model):
 
 	def __repr__(self):
 
-		return f"<Note note_id={self.note_id}>"
+		return f"<Goal goal_id={self.goal_id}>"
 
-	notes = db.relationship("User", backref="notes")
+	notes = db.relationship("User", backref="goals")
 
 
 
@@ -63,6 +63,6 @@ if __name__ == "__main__":
 
 	connect_to_db(app)
 	#db.drop_all()
-	db.create_all()
+	#db.create_all()
 
 	print("Connect to DB.")
