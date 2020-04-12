@@ -2,4 +2,30 @@
 
 {% block body %}
 
+
+</div>
+	<div>
+		<form id="addNoteForm" action="/add_note" method="POST" enctype="multipart/form-data">
+			<h3>Add a note</h3>
+			<textarea type="text" name="note" id="note" placeholder="Not all who wander..."></textarea>
+			<br>
+			<br>
+			<input type="submit" class="btn btn-dark">
+		</form>
+	</div>
+
+	<div class="notes-section">
+	<br>
+		<p id="note-p">Notes</p>
+		<div id="allTheNotes">
+			{% if notes %}
+				{% for note in notes %}
+				<p>{{note.note}}</p> <!--can add an href here-->
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+
+
+
 {% endblock %}

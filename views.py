@@ -1,6 +1,6 @@
 from server import app
-from flask import Flask, render_template, request, redirect, session
-from model import Model, User, Goal
+from flask import Flask, render_template, request, redirect, session, jsonify
+from model import Model, db, User, Goal
 
 
 @app.route("/")
@@ -52,11 +52,30 @@ def login_process():
         return redirect("/")
 
 
-def search_goals(self, search_parms):
+@app.route("/add_goal", methods=["GET", "POST"])
+def add_goal():
+    """User can add short notes to their homepage."""
+
+    user_id = session["user_id"]
+
+    if request.method == "POST":
+        goal = request.form["goal"]
+        new_goal = Goal(goal=goal, user_id=user_id)
+
+        db.session.add(new_goal)
+        db.session.commit()
+
+        # goal_id = new_goal.goal_id
+        return jsonify({"goal_id": new_goal.goal_id, "Goal": new_goal.goal})
+    else:
+        return redirect(f"/")
+
+@app.route("/edit_goal")
+def edit_goal():
     """Function to search the user's goals"""
 
-    user_goals = Goal.query.filter_by(user_id=user_id)
-    goal = user_goals.filter(Goal.keywords.like(f"%{search_parms}%")).all()
+    user_goals = Goal.query.filter_by(user_id=user_id).all()
+    goal = Goal.query.filter_by(goal_id=goal_id).first()
     return goal
 
 

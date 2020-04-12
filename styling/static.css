@@ -1,0 +1,152 @@
+html {
+	padding: 10px;
+}
+
+a {
+	color: ivory;
+}
+
+h3 {
+	color: ;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: 900;
+}
+
+h5 {
+	color: ;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: 900;
+}
+
+label {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bolder;
+}
+
+.welcome-color a {
+	color: #C9A790;
+}
+
+.around-body {
+	padding: 2%;
+}
+
+.banner-text{
+	font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	text-align: center;
+	color: #C9A790;
+}
+
+.banner-small{
+	color: black;
+}
+#bg {
+	opacity: 0.5;
+  background-image: url(/static/images/globe_map_travel.jpg);
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  z-index: -1;
+  top: 0;
+}
+
+.header-ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	color: #C9A790;
+}
+
+.header-ul li {
+	display: inline;
+	color: #C9A790;
+}
+
+.header-ul a {
+	color: #C9A790;
+}
+
+.button-divs {
+	text-align: center
+	color: black ;
+}
+
+
+/*#round_buttons {
+	border-radius: 50%;
+}*/
+
+.login-form {
+	align-items: left;
+}
+
+.register-form {
+	align-items: right;
+}
+
+
+#large-box {
+	height: 100px;
+	line-height: 100px;
+  font-size: 14pt;
+  text-align: left;
+}
+
+.forms-center {
+	align-items: center;
+}
+
+.col-4 img {
+	width: 95%;
+	margin-bottom: 2em;
+	margin-left: 7em;
+}
+
+.notes-section {
+	position: absolute;
+	top: 250px;
+	right:0;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 18pt;
+	font-weight: bolder;
+}
+
+#note-p {
+	font-family: cursive;
+	font-size: 20pt;
+}
+
+.container {
+	align-items: center;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 18pt;
+	font-weight: bolder;
+	margin: 5px;
+}
+
+#col-entry-page {
+	float: left;
+}
+
+#single-entry-page {
+	float: right;
+	overflow: hidden;
+	text-align: right;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 18pt;
+	font-weight: bolder;
+}
+
+.col-7 {
+	align-content: center;
+	overflow: hidden;
+}
+
+.col-5 img {
+	width: 95%;
+	margin-bottom: 2em;
+}
