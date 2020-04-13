@@ -1,16 +1,18 @@
-from server import app
-from flask import Flask, render_template, request, redirect, session, jsonify
+from flask import Blueprint, render_template, request, redirect, session, jsonify
 from model import Model, db, User, Goal
 from sqlalchemy import update
 
-@app.route("/")
+view = Blueprint('view', __name__)
+
+
+@view.route("/")
 def homepage():
-    """Homepage with login or create profile."""
+    """Homepage with login or creat e profile."""
 
     return render_template("welcome_page.html")
 
 
-@app.route("/registration", methods=["GET", "POST"])
+@view.route("/registration", methods=["GET", "POST"])
 def registration():
     """User registration/create a profile page"""
 
@@ -38,7 +40,7 @@ def registration():
         return redirect("/")
 
 
-@app.route("/api/auth", methods=["POST"])
+@view.route("/api/auth", methods=["POST"])
 def login_process():
     """Have a user login."""
 
@@ -52,7 +54,7 @@ def login_process():
         return redirect("/")
 
 
-@app.route("/add_goal", methods=["GET", "POST"])
+@view.route("/add_goal", methods=["GET", "POST"])
 def add_goal():
     """User can add short notes to their homepage."""
 
@@ -70,21 +72,22 @@ def add_goal():
     else:
         return redirect(f"/")
 
-@app.route("/edit_goal")
+
+@view.route("/edit_goal")
 def edit_goal():
     """Function to search the user's goals"""
 
     user_id = session["user_id"]
-    goal = Goal.query(User).get(user_id)
-    goal_id = goal.goal_id
-    updated_goal = goal.update(). \
-        where(goal_id=goal_id). \
-        values(goal='')
+    User.user_name = request.get['goal']
+    to_update = User.user_name
+    updated_goal = Goal(to_update=goal, user_id=user_id)
 
-    return jsonify({"goal_id": goal.goal_id, "Goal": updated_goal.goal})
+    db.session.add(updated_goal)
+    db.session.commit()
+    return jsonify({"goal_id": updated_goal.goal_id, "Goal": updated_goal.goal})
 
 
-@app.route("/logout")
+@view.route("/logout")
 def logout():
     """User logout."""
 

@@ -40,7 +40,7 @@ class Goal(db.Model):
 
 		return f"<Goal goal_id={self.goal_id}>"
 
-	notes = db.relationship("User", backref="goals")
+	goals = db.relationship("User", backref="goals")
 
 
 
@@ -49,7 +49,7 @@ def connect_to_db(app):
 	"""Connect the database to our Flask app."""
 
 	# Configure to use our PostgreSQL database
-	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:var/take-home-proj'
+	# app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:{var}/take-home-proj'
 	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 	app.config['SQLALCHEMY_ECHO'] = True
 	db.app = app

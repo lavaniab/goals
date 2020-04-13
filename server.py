@@ -1,10 +1,11 @@
 from jinja2 import StrictUndefined
-
 from flask import Flask
-
 from model import connect_to_db, db, User, Goal
+from views import view
 
 app = Flask(__name__)
+
+app.register_blueprint(view, url_prefix='/')
 
 app.config.from_pyfile('config.py')
 
@@ -14,6 +15,7 @@ app.jinja_env.undefined = StrictUndefined
 app.jinja_env.auto_reload = True
 
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+
 
 """Write a web application that allows users to view, save, and edit goals they want to achieve.
 Users should be able to log in. They should only be able to see their own goals."""
@@ -26,4 +28,4 @@ if __name__ == '__main__':
 
 	#DebugToolbarExtension(app)
 
-	app.run(host='0.0.0.0')
+	app.run(host='0.0.0.0', port='5002')

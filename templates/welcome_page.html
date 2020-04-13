@@ -2,16 +2,16 @@
 
 {% block body %}
 
-<div class="login-form">
-  <br>
+<br>
 <h3>Login</h3>
 <br>
+<div>
 <form action="/api/auth" method="POST">
   <div class="form-group row">
     <label for="email" class="col-sm-2 col-form-label">Email address:</label>
     <div class="col-sm-10">
-    <input type="email" class="form-group" name="email" id="emailInput" placeholder="jsmith@gmail.com" required>
-  </div>
+      <input type="email" class="form-group" name="email" id="emailInput" placeholder="jsmith@gmail.com" required>
+    </div>
   </div>
   <div class="form-group row">
     <label for="password" class="col-sm-2 col-form-label">Password:</label>
